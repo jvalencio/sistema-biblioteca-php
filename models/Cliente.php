@@ -31,10 +31,6 @@ class Cliente {
         return $this->tipo;
     }
 
-    public function calcularValor(): float {
-        return static::VALOR_ALUGUEL;
-    }
-
     // Setters
 
     public function setNome(string $nome): void {
@@ -43,5 +39,11 @@ class Cliente {
 
     public function setEmail(string $email): void {
         $this->email = $email;
+    }
+
+    // Funções
+
+    public function calcularValor(): float {
+        return static::VALOR_ALUGUEL;
     }
 }
