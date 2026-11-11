@@ -4,13 +4,13 @@ class Cliente {
     private int $id;
     private string $nome;
     private string $email;
-    private string $tipo;
+    protected string $tipo = "comum";
+    protected const VALOR_ALUGUEL = 6.00;
 
-    public function __construct (int $id, string $nome, string $email, string $tipo) {
+    public function __construct (int $id, string $nome, string $email) {
         $this->id = $id;
         $this->nome = $nome;
         $this->email = $email;
-        $this->tipo = $tipo;
     }
 
     // Getters
@@ -31,6 +31,10 @@ class Cliente {
         return $this->tipo;
     }
 
+    public function calcularValor(): float {
+        return static::VALOR_ALUGUEL;
+    }
+
     // Setters
 
     public function setNome(string $nome): void {
@@ -39,9 +43,5 @@ class Cliente {
 
     public function setEmail(string $email): void {
         $this->email = $email;
-    }
-
-    public function setTipo(string $tipo): void {
-        $this->tipo = $tipo;
     }
 }
