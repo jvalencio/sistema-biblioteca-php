@@ -69,18 +69,4 @@ class Livro {
     public function getAnoPublicacao(): int {
         return $this->anoPublicacao;
     }
-
-    // Setters
-
-    public function setTitulo(string $titulo): void {
-        $this->titulo = $this->validarTitulo($titulo);
-    }
-
-    public function setAutor(string $autor): void {
-        $this->autor = $this->validarAutor($autor);
-    }
-
-    public function setAnoPublicacao(int $anoPublicacao): void {
-        $this->anoPublicacao = $this->validarAnoPublicacao($anoPublicacao);
-    }
 }

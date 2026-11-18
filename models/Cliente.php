@@ -60,16 +60,6 @@ class Cliente {
         return $this->tipo;
     }
 
-    // Setters
-
-    public function setNome(string $nome): void {
-        $this->nome = $this->validarNome($nome);
-    }
-
-    public function setEmail(string $email): void {
-        $this->email = $this->validarEmail($email);
-    }
-
     // Funções
 
     public function calcularValor(): float {
