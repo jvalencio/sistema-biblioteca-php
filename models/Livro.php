@@ -52,21 +52,14 @@ class Livro {
         return $anoPublicacao;
     }
 
-    // Getters
+    // Get
 
-    public function getId(): int {
-        return $this->id;
-    }
-
-    public function getTitulo(): string {
-        return $this->titulo;
-    }
-
-    public function getAutor(): string {
-        return $this->autor;
-    }
-
-    public function getAnoPublicacao(): int {
-        return $this->anoPublicacao;
+    public function toArray(): array {
+        return [
+            "id" => $this->id,
+            "titulo" => $this->titulo,
+            "autor" => $this->autor,
+            "anoPublicacao" => $this->anoPublicacao
+        ];
     }
 }

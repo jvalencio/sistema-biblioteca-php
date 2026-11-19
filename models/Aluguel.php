@@ -6,12 +6,12 @@ class Aluguel {
     private int $id;
     private int $clienteId;
     private int $livroId;
-    private string $dataAluguel;
+    private string $data;
 
     public function __construct (JsonFile $arquivo, int $clienteId, int $livroId) {
         $this->clienteId = $this->validarClienteId($arquivo, $clienteId);
         $this->livroId = $this->validarLivroId($arquivo, $livroId);
-        $this->dataAluguel = date("Y-m-d");
+        $this->data = date("Y-m-d");
     }
 
     // Validações
@@ -36,21 +36,14 @@ class Aluguel {
         return $livro["id"];
     }
 
-    // Getters
+    // Get
 
-    public function getId(): int {
-        return $this->id;
-    }
-
-    public function getClienteId(): int {
-        return $this->clienteId;
-    }
-
-    public function getLivroId(): int {
-        return $this->livroId;
-    }
-    
-    public function getDataAluguel(): string {
-        return $this->dataAluguel;
+    public function toArray(): array {
+        return [
+            "id" => $this->id,
+            "clienteId" => $this->clienteId,
+            "livroId" => $this->livroId,
+            "data" => $this->data
+        ];
     }
 }
