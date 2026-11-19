@@ -42,22 +42,15 @@ class Cliente {
         return $email;
     }
 
-    // Getters
+    // Get
 
-    public function getId(): int {
-        return $this->id;
-    }
-
-    public function getNome(): string {
-        return $this->nome;
-    }
-
-    public function getEmail(): string {
-        return $this->email;
-    }
-
-    public function getTipo(): string {
-        return $this->tipo;
+    public function toArray(): array {
+        return [
+            "id" => $this->id,
+            "nome" => $this->nome,
+            "email" => $this->email,
+            "tipo" => $this->tipo
+        ];
     }
 
     // Funções
