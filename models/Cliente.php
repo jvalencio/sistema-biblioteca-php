@@ -14,7 +14,7 @@ class Cliente {
 
     // Validações
 
-    public function validarNome(string $nome): string {
+    private function validarNome(string $nome): string {
         $nome = trim($nome);
 
         if ($nome === "") {
@@ -28,7 +28,7 @@ class Cliente {
         return $nome;
     }
 
-    public function validarEmail(string $email) {
+    private function validarEmail(string $email) {
         $email = trim($email);
 
         if ($email === "") {

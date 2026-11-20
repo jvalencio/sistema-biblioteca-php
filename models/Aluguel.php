@@ -16,7 +16,7 @@ class Aluguel {
 
     // Validações
 
-    public function validarClienteId(JsonFile $arquivo, int $clienteId): int {
+    private function validarClienteId(JsonFile $arquivo, int $clienteId): int {
         $cliente = $arquivo->buscar("clientes", $clienteId);
 
         if (!$cliente) {
@@ -26,7 +26,7 @@ class Aluguel {
         return $cliente["id"];
     }
 
-    public function validarLivroId(JsonFile $arquivo, int $livroId): int {
+    private function validarLivroId(JsonFile $arquivo, int $livroId): int {
         $livro = $arquivo->buscar("livros", $livroId);
 
         if (!$livro) {
