@@ -1,0 +1,12 @@
+{
+    "livros": [],
+    "clientes": [
+        {
+            "id": 1,
+            "nome": "João Victor",
+            "email": "joaosilva@gmail.com",
+            "tipo": "vip"
+        }
+    ],
+    "alugueis": []
+}
