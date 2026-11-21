@@ -3,7 +3,7 @@
 require_once "JsonFile.php";
 
 class Aluguel {
-    private int $id;
+    private ?int $id = null;
     private int $clienteId;
     private int $livroId;
     private string $data;

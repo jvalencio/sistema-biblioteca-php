@@ -1,7 +1,7 @@
 <?php
 
 class Livro {
-    private int $id;
+    private ?int $id = null;
     private string $titulo;
     private string $autor;
     private int $anoPublicacao;

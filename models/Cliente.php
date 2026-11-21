@@ -1,7 +1,7 @@
 <?php
 
 class Cliente {
-    private int $id;
+    private ?int $id = null;
     private string $nome;
     private string $email;
     protected string $tipo = "comum";
