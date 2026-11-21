@@ -1,0 +1,252 @@
+:root {
+    --fundo: #eef2f5;
+    --superficie: #ffffff;
+    --texto: #16283c;
+    --texto-suave: #5a6b7d;
+    --principal: #2f5d62;
+    --principal-escuro: #234649;
+    --borda: #d5dde4;
+    --erro: #b3261e;
+    --erro-fundo: #fdecea;
+    --sucesso: #1f6b3f;
+    --sucesso-fundo: #e6f4ea;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+h1,
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+}
+
+.topo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--superficie);
+    border-bottom: 1px solid var(--borda);
+}
+
+.marca {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--principal);
+    text-decoration: none;
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.menu a {
+    color: var(--texto-suave);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+
+.menu a:hover,
+.menu a.ativo {
+    color: var(--texto);
+    border-bottom-color: var(--principal);
+}
+
+.conteudo {
+    max-width: 800px;
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+}
+
+.conteudo h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitulo {
+    color: var(--texto-suave);
+    margin-bottom: 2rem;
+}
+
+.caixa {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 1.75rem;
+}
+
+.secoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.secao {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+}
+
+.secao h2 {
+    font-size: 1.35rem;
+    color: var(--principal);
+}
+
+.secao p {
+    flex: 1;
+    color: var(--texto-suave);
+}
+
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.campo label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.campo input,
+.campo select {
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--superficie);
+    color: inherit;
+    font: inherit;
+}
+
+.campo input:focus,
+.campo select:focus {
+    outline: 2px solid var(--principal);
+    outline-offset: 1px;
+    border-color: var(--principal);
+}
+
+.botao {
+    align-self: flex-start;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--principal);
+    color: #ffffff;
+    border: 1px solid var(--principal);
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.botao:hover {
+    background: var(--principal-escuro);
+}
+
+.botao-secundario {
+    background: transparent;
+    color: var(--principal);
+}
+
+.botao-secundario:hover {
+    background: var(--principal);
+    color: #ffffff;
+}
+
+.botao:focus-visible {
+    outline: 2px solid var(--principal);
+    outline-offset: 2px;
+}
+
+.alerta {
+    margin-bottom: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.alerta.erro {
+    background: var(--erro-fundo);
+    color: var(--erro);
+}
+
+.alerta.sucesso {
+    background: var(--sucesso-fundo);
+    color: var(--sucesso);
+}
+
+.tabela-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--borda);
+}
+
+th {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--texto-suave);
+}
+
+tbody tr:hover {
+    background: #f6f9fb;
+}
+
+.vazio {
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+@media (max-width: 480px) {
+    .topo {
+        padding: 1rem;
+    }
+
+    .caixa {
+        padding: 1.25rem;
+    }
+}
