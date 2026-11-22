@@ -1,5 +1,12 @@
 {
-    "livros": [],
+    "livros": [
+        {
+            "id": 1,
+            "titulo": "Harry Potter e a Pedra Filosofal",
+            "autor": "J.K. Rowling",
+            "anoPublicacao": 1997
+        }
+    ],
     "clientes": [
         {
             "id": 1,
@@ -8,5 +15,12 @@
             "tipo": "vip"
         }
     ],
-    "alugueis": []
+    "alugueis": [
+        {
+            "id": 1,
+            "clienteId": 1,
+            "livroId": 1,
+            "data": "2026-11-22"
+        }
+    ]
 }
