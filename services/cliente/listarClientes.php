@@ -4,7 +4,9 @@ require_once __DIR__ . "/../../models/JsonFile.php";
 
 $bd = new JsonFile();
 $clientes = $bd->listar("clientes");
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -42,10 +44,10 @@ $clientes = $bd->listar("clientes");
                         </thead>
                         <tbody>
                             <?php foreach ($clientes as $cliente): ?>
-                                <?php $tipo = strtolower($cliente["tipo"] ?? "") === "vip" ? "VIP" : "Comum"; ?>
+                                <?php $tipo = $cliente["tipo"] === "vip" ? "VIP" : "Comum"; ?>
                                 <tr>
-                                    <td><?= htmlspecialchars($cliente["nome"] ?? "") ?></td>
-                                    <td><?= htmlspecialchars($cliente["email"] ?? "") ?></td>
+                                    <td><?= htmlspecialchars($cliente["nome"]) ?></td>
+                                    <td><?= htmlspecialchars($cliente["email"]) ?></td>
                                     <td><?= $tipo ?></td>
                                 </tr>
                             <?php endforeach; ?>
