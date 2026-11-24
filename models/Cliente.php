@@ -57,7 +57,6 @@ class Cliente {
 
     public function toArray(): array {
         return [
-            "id" => $this->id,
             "nome" => $this->nome,
             "email" => $this->email,
             "tipo" => $this->tipo

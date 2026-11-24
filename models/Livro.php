@@ -67,7 +67,6 @@ class Livro {
 
     public function toArray(): array {
         return [
-            "id" => $this->id,
             "titulo" => $this->titulo,
             "autor" => $this->autor,
             "anoPublicacao" => $this->anoPublicacao

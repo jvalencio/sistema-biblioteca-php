@@ -51,7 +51,6 @@ class Aluguel {
 
     public function toArray(): array {
         return [
-            "id" => $this->id,
             "clienteId" => $this->clienteId,
             "livroId" => $this->livroId,
             "data" => $this->data
