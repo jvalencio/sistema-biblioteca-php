@@ -11,8 +11,8 @@ $email = "";
 $tipo = "comum";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = trim($_POST["nome"] ?? "");
-    $email = trim($_POST["email"] ?? "");
+    $nome = $_POST["nome"] ?? "";
+    $email = $_POST["email"] ?? "";
     $tipo = $_POST["tipo"] ?? "comum";
 
     try {
@@ -33,7 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $erro = $e->getMessage();
     }
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
