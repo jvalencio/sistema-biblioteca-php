@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/../../models/Cliente.php";
+require_once __DIR__ . "/../../models/ClienteVip.php";
 require_once __DIR__ . "/../../models/Aluguel.php";
 require_once __DIR__ . "/../../models/JsonFile.php";
 
@@ -9,23 +11,36 @@ $livros = $bd->listar("livros");
 
 $erro = "";
 $mensagem = "";
-$clienteId = "";
-$livroId = "";
+$clienteId = $clientes[0]["id"] ?? 0;
+$livroId = $livros[0]["id"] ?? 0;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $clienteId = $_POST["clienteId"] ?? "";
-    $livroId = $_POST["livroId"] ?? "";
+    $clienteId = (int) ($_POST["clienteId"] ?? 0);
+    $livroId = (int) ($_POST["livroId"] ?? 0);
 
-    try {
-        $aluguel = new Aluguel($bd, (int) $clienteId, (int) $livroId);
-        $bd->inserir("alugueis", $aluguel->toArray());
+    if (isset($_POST["cadastrar"])) {
+        try {
+            $aluguel = new Aluguel($bd, $clienteId, $livroId);
+            $bd->inserir("alugueis", $aluguel->toArray());
 
-        $mensagem = "Aluguel cadastrado com sucesso!";
-        $clienteId = "";
-        $livroId = "";
-    } catch (InvalidArgumentException $e) {
-        $erro = $e->getMessage();
+            $mensagem = "Aluguel cadastrado com sucesso!";
+        } catch (InvalidArgumentException $e) {
+            $erro = $e->getMessage();
+        }
     }
+}
+
+$valor = "";
+$dadosCliente = $bd->buscar("clientes", $clienteId);
+
+if ($dadosCliente) {
+    if ($dadosCliente["tipo"] === "vip") {
+        $clienteSelecionado = new ClienteVip($dadosCliente["nome"], $dadosCliente["email"]);
+    } else {
+        $clienteSelecionado = new Cliente($dadosCliente["nome"], $dadosCliente["email"]);
+    }
+
+    $valor = "R$ " . number_format($clienteSelecionado->calcularValor(), 2, ",", ".");
 }
 
 ?>
@@ -50,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <main class="conteudo">
         <h1>Cadastrar aluguel</h1>
-        <p class="subtitulo">Escolha o cliente e o livro para registrar o aluguel.</p>
+        <p class="subtitulo">Escolha o cliente e o livro. Use "Ver valor" para atualizar o valor do cliente escolhido.</p>
 
         <div class="caixa">
             <?php if ($erro): ?>
@@ -67,10 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <form class="formulario" method="POST">
                     <div class="campo">
                         <label for="clienteId">Cliente</label>
-                        <select id="clienteId" name="clienteId" required>
-                            <option value="">Selecione um cliente</option>
+                        <select id="clienteId" name="clienteId">
                             <?php foreach ($clientes as $cliente): ?>
-                                <option value="<?= $cliente["id"] ?>" <?= (string) $cliente["id"] === $clienteId ? "selected" : "" ?>>
+                                <option value="<?= $cliente["id"] ?>" <?= $cliente["id"] === $clienteId ? "selected" : "" ?>>
                                     <?= htmlspecialchars($cliente["nome"]) ?>
                                 </option>
                             <?php endforeach; ?>
@@ -79,17 +93,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     <div class="campo">
                         <label for="livroId">Livro</label>
-                        <select id="livroId" name="livroId" required>
-                            <option value="">Selecione um livro</option>
+                        <select id="livroId" name="livroId">
                             <?php foreach ($livros as $livro): ?>
-                                <option value="<?= $livro["id"] ?>" <?= (string) $livro["id"] === $livroId ? "selected" : "" ?>>
+                                <option value="<?= $livro["id"] ?>" <?= $livro["id"] === $livroId ? "selected" : "" ?>>
                                     <?= htmlspecialchars($livro["titulo"]) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
 
-                    <button class="botao" type="submit">Cadastrar aluguel</button>
+                    <div class="campo">
+                        <label for="valor">Valor do aluguel</label>
+                        <input type="text" id="valor" value="<?= $valor ?>" readonly>
+                    </div>
+
+                    <div class="acoes">
+                        <button class="botao botao-secundario" type="submit">Ver valor</button>
+                        <button class="botao" type="submit" name="cadastrar">Cadastrar aluguel</button>
+                    </div>
                 </form>
             <?php endif; ?>
         </div>
