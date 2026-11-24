@@ -36,7 +36,19 @@ class Aluguel {
         return $livro["id"];
     }
 
-    // Get
+    // Getters
+
+    public function getClienteId(): int {
+        return $this->clienteId;
+    }
+
+    public function getLivroId(): int {
+        return $this->livroId;
+    }
+
+    public function getData(): string {
+        return $this->data;
+    }
 
     public function toArray(): array {
         return [

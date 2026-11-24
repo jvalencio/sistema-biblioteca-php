@@ -42,7 +42,19 @@ class Cliente {
         return $email;
     }
 
-    // Get
+    // Getters
+
+    public function getNome(): string {
+        return $this->nome;
+    }
+
+    public function getEmail(): string {
+        return $this->email;
+    }
+
+    public function getTipo(): string {
+        return $this->tipo;
+    }
 
     public function toArray(): array {
         return [
