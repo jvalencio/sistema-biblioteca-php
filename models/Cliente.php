@@ -35,7 +35,7 @@ class Cliente {
             throw new InvalidArgumentException("O e-mail não pode ficar vazio.");
         }
 
-        if (!str_contains($email, "@") && !str_ends_with($email, ".com")) {
+        if (!str_contains($email, "@") || !str_ends_with($email, ".com")) {
             throw new InvalidArgumentException("O e-mail precisa estar em um formato válido.");
         }
 
