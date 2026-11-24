@@ -13,6 +13,12 @@
             "nome": "João Victor",
             "email": "joaosilva@gmail.com",
             "tipo": "vip"
+        },
+        {
+            "id": 2,
+            "nome": "Miguel Santana",
+            "email": "miguelsantana@gmail.com",
+            "tipo": "comum"
         }
     ],
     "alugueis": [
