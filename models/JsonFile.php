@@ -49,6 +49,9 @@ class JsonFile {
         return $novoId;
     }
 
+/*
+    Funções de atualizar e excluir são opcionais.
+
     public function atualizar(string $tabela, int $id, array $registro): bool {
         $dados = $this->ler();
         $lista = $this->tabela($dados, $tabela);
@@ -82,6 +85,7 @@ class JsonFile {
 
         return false;
     }
+*/
 
     private function ler(): array {
         $conteudo = file_get_contents($this->arquivo);
